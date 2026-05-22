@@ -8,7 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "patients")
+@Table(name = "tb_patients")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

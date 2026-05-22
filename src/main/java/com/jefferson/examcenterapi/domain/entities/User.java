@@ -5,12 +5,12 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.management.relation.Role;
 import java.sql.Timestamp;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = "tb_users")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -19,18 +19,17 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
-    private Integer id;
+    private UUID id;
 
     private String name;
     private String password;
     private String email;
     private String phone;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    public Set<User> user;
+    @OneToOne
+    public Role role;
 
 
     @CreatedDate
